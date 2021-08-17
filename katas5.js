@@ -79,13 +79,117 @@ function maxValue(arr){
 function testMaxValue1(){
     let result = maxValue([-2,3,258,9876,-987530,988759.2,988759.25])
     let expected = 988759.25
-    console.assert(result === expected, `espetado: ${expected}, obtido: ${result}`)
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
 }
 
 function testMaxValue2(){
     let result = maxValue([-2,0,258,9876,-987530,988759.2,988759.25, 1000000,999999.99])
     let expected = 1000000
-    console.assert(result === expected, `espetado: ${expected}, obtido: ${result}`)
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
 }
 testMaxValue1()
 testMaxValue2()
+
+/*Kata 5*/
+
+function calculateRemainder(num1,num2){
+    return num1%num2
+}
+
+function testCalculateRemainder1(){
+    let result = calculateRemainder(10,3)
+    let expected = 1
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+
+}
+
+function testCalculateRemainder2(){
+    let result = calculateRemainder(4,5)
+    let expected = 4
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+
+}
+testCalculateRemainder1()
+testCalculateRemainder2()
+
+/*Kata 6*/
+
+function distinctValues(arr){    
+    let result = arr.filter((numero,index,arr) => arr.indexOf(numero) === index)
+    return result
+}
+
+function testDistinctValues1(){
+    let result = distinctValues([5,5,9,8,6,5,4,9,7,7])
+    let expected = [5,9,8,6,4,7]
+    console.assert(result === expected , `esperado: ${expected} obtido: ${result}`)
+}
+
+function testDistinctValues2(){
+    let result = distinctValues([1,1,2,2,3,3,1,2,3])
+    let expected = [1,2,3]
+    console.assert(result === expected , `esperado: ${expected} obtido: ${result}`)
+}
+testDistinctValues1()
+testDistinctValues2()
+
+/*Kata 7*/
+
+function countValues(arr){
+    const result = []
+    let resultado = ''
+    for( let number of arr){
+        if(!result[number]){
+            result[number] = 1
+            resultado += number
+        }
+        else{
+            result[number] += 1
+            
+        }
+    }
+   
+    return resultado + result
+}
+
+function testCountValues1(){
+      let result = countValues([1,1,1,2,2,3,3])
+      let expected = "1(3) 2(2) 3(2)"
+      console.assert(expected === result  , `esperado: ${expected} obtido: ${result}`)
+    }
+
+    function testCountValues2(){
+    let result = countValues([4,4,5,6,7,4,7,5,6,7])
+    let expected = "4(3) 5(2) 6(2) 7(3)"
+     console.assert(expected === result  , `esperado: ${expected} obtido: ${result}`)
+}
+
+testCountValues1()
+testCountValues2()
+
+  /*Kata 8*/
+
+  function evaluateExpression(str,obj){
+    let expressao = str.split(" ")  
+    let result = obj[expressao[0]]
+      for(let i = 0; i< expressao.length; i++){
+          let indiceAtual = expressao[i]
+          if(indiceAtual === "+"){
+              result += obj[expressao[i+1]]
+          }
+          if(indiceAtual === "-"){
+              result -= obj[expressao[i+1]]
+          }
+
+      }
+      
+      return result
+  }
+
+  function testEvaluateExpression1() {
+    let result = evaluateExpression("a + b + c - d", {a: 1, b: 7, c: 3, d: 14});
+    let expected = -3
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+ }
+
+  testEvaluateExpression1()
