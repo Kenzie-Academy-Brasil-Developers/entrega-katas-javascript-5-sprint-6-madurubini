@@ -137,11 +137,9 @@ testDistinctValues2()
 
 function countValues(arr){
     const result = []
-    let resultado = ''
     for( let number of arr){
         if(!result[number]){
             result[number] = 1
-            resultado += number
         }
         else{
             result[number] += 1
@@ -149,7 +147,7 @@ function countValues(arr){
         }
     }
    
-    return resultado + result
+    return result 
 }
 
 function testCountValues1(){
@@ -192,4 +190,10 @@ testCountValues2()
     console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
  }
 
+ function testEvaluateExpression2() {
+    let result = evaluateExpression("a - b + c - d", {a: 1, b: 2, c: 3, d: 4});
+    let expected = -2
+    console.assert(result === expected, `esperado: ${expected}, obtido: ${result}`)
+ }
   testEvaluateExpression1()
+  testEvaluateExpression2()
